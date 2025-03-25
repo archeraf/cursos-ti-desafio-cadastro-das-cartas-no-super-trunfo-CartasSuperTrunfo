@@ -1,8 +1,8 @@
 #include <stdio.h>
 
 //Declaração de variáveis globais
-char estado, estado2, codigo[4], codigo2[4], nomeCidade[20], nomeCidade2[20];
-int qtdPontosTur, qtdPontosTur2,vencedorPop, vencedorArea,vencedorPib,vencedorPontosTur,vencedorDensPop,vencedorPibCapita,vencedorSuperPod;
+char estado[10], estado2[10], codigo[4], codigo2[4], nomeCidade[20], nomeCidade2[20];
+int qtdPontosTur, qtdPontosTur2, resultadoPopulacao;
 float area, area2, pib, pib2,densidadePop,densidadePop2, pibCapita, pibCapita2, superPod, superPod2;
 unsigned long int populacao, populacao2;
 
@@ -110,35 +110,24 @@ void ExibirDados(){
 
 }
 
-//Método responsável pela comparação dos atributos das duas cartas
-void CompararCartas(){
-    vencedorPop = populacao > populacao2;
-    vencedorPib = pib > pib2;
-    vencedorPibCapita = pibCapita > pibCapita2;
-    vencedorArea = area > area2;
-    vencedorDensPop = densidadePop < densidadePop2;
-    vencedorPontosTur = qtdPontosTur > qtdPontosTur2;
-    vencedorSuperPod = superPod > superPod2;
-}
+void CompararEExibirPopulacao(){
+    printf("Comparação de populações:\n");
+    printf("Carta 1: %lu\n", populacao);
+    printf("Carta 2: %lu\n", populacao2);
 
-void ExibirResultadoComparacoes(){
-    printf("Comparação de Cartas:\n");
-    printf("População da carta 1 ganhou da população da carta 2? R: %i\n", vencedorPop);
-    printf("Pib da carta 1 ganhou do Pib da carta 2? R: %i\n", vencedorPib);
-    printf("Pib per capita da carta 1 ganhou do Pib per capita da carta 2? R: %i\n", vencedorPibCapita);
-    printf("Area da carta 1 ganhou da Area da carta 2? R: %i\n", vencedorArea);
-    printf("Densidade populacional da carta 1 ganhou da densidade populacional da carta 2? R: %i\n", vencedorPop);
-    printf("Quantidade de pontos turísiticos da carta 1 ganhou da quantidade de pontos turísiticos da carta 2? R: %i\n", vencedorPop);
-    printf("Super poder da carta 1 ganhou do super poder da carta 2? R: %i\n", vencedorPop);
+    if(populacao > populacao2){
+        printf("População da carta 1 é maior que da carta 2.\n");
+    } else{
+        printf("População da carta 2 é maior que a população da carta 1\n");
+    }
 }
 
 //Método main com a chamada para os demais métodos
 int main() {
    ColetarDados();
    ColetarDados2();
-   CompararCartas();
    ExibirDados();
-   ExibirResultadoComparacoes();
+   CompararEExibirPopulacao();
 
     return 0;
 }
